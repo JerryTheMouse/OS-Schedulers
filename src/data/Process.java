@@ -5,21 +5,28 @@ package data;
  * Copyrights Shadyoatef@gmail.com
  */
 public class Process {
+    private static int nextID = 1;
+
+    // we need an automated identifier
+    private int id;
     private int priority;
     private int arrival;
     private int duration;
     private int finish;
 
-    public Process(int duration, int arrival) {
-        if (duration < 1 || arrival < 0)
-            throw new IllegalArgumentException();
-        this.duration = duration;
-        this.arrival = arrival;
+
+    public Process(int arrival, int duration) {
+        this(arrival,duration,0);
+
     }
 
-    public Process(int priority, int arrival, int duration) {
+    public Process(int arrival, int duration, int priority) {
+
         if (duration < 1 || arrival < 0 || priority < 0)
             throw new IllegalArgumentException();
+
+        this.id = nextID;
+        nextID++;
         this.priority = priority;
         this.arrival = arrival;
         this.duration = duration;
