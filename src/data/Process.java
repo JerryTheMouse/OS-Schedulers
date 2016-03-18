@@ -80,6 +80,10 @@ public class Process {
         return finish - arrival - duration;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public enum Attributes {
         PRIORITY, ARRIVAL, DURATION
     }
