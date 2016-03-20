@@ -2,6 +2,7 @@ import data.Process;
 import data.WorkUnit;
 import schedulers.AbstractScheduler;
 import schedulers.FCFS;
+import schedulers.RoundRobin;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -19,8 +20,10 @@ public class nonGUIMain {
         processes.add(new Process(0, 10));
         processes.add(new Process(5, 6));
         processes.add(new Process(2, 3));
+        processes.add(new Process(25, 6));
 
-        AbstractScheduler scheduler = new FCFS();
+        AbstractScheduler scheduler = new RoundRobin();
+        ((RoundRobin) scheduler).setQuantumTime(2);
         System.out.println(String.format("The used scheduler is : %s", scheduler.getName()));
         System.out.println(String.format("It works as the following : %s", scheduler.getDescription()));
 
@@ -36,9 +39,13 @@ public class nonGUIMain {
         int totalTime = 0;
         for (WorkUnit u :
                 output) {
-            totalTime+=u.getTime();
-        System.out.print(String.format("| P%s ", u.getP().getId()));
-        System.out.print(String.format(" %s %d", (new String(new char[u.getTime()])).replace("\0"," "), totalTime));
+            totalTime += u.getTime();
+            if (u.getP() == null)
+                System.out.print(String.format("| Idle "));
+            else
+                System.out.print(String.format("| P%s ", u.getP().getId()));
+
+            System.out.print(String.format(" %s %d", (new String(new char[u.getTime()])).replace("\0", " "), totalTime));
         }
         System.out.println("|");
     }
