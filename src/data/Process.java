@@ -4,7 +4,7 @@ package data;
  * Created by Shady Atef on 3/18/16.
  * Copyrights Shadyoatef@gmail.com
  */
-public class Process {
+public class Process implements Cloneable{
     private static int nextID = 1;
 
     // we need an automated identifier
@@ -36,9 +36,7 @@ public class Process {
         return finish;
     }
 
-    public void resetFinish(){
-        this.finish = 0;
-    }
+
     public void setFinish(int finish) {
         if (finish < (this.arrival + this.duration))
             throw new IllegalArgumentException("A process can't finish before its arrival & execution");
@@ -85,6 +83,11 @@ public class Process {
 
     public int getId() {
         return id;
+    }
+
+    @Override
+    public Process clone() throws CloneNotSupportedException {
+        return (Process) super.clone();
     }
 
     public enum Attributes {

@@ -26,18 +26,24 @@ public class nonGUIMain {
         //Run Round Robin
         scheduler = new RoundRobin();
         ((RoundRobin) scheduler).setQuantumTime(2);
-        RunScheduler(processes, scheduler);
-        ResetProcessFinishTimes(processes);
+        RunScheduler(cloneProcesses(processes), scheduler);
         //Run FCFS
         scheduler = new FCFS();
-        RunScheduler(processes, scheduler);
+        RunScheduler(cloneProcesses(processes), scheduler);
 
     }
 
+    private static ArrayList<Process> cloneProcesses(ArrayList<Process> original)  {
 
-    private static void ResetProcessFinishTimes(ArrayList<Process> processes) {
-        processes.forEach(Process::resetFinish);
-    }
+        ArrayList<Process> copy = new ArrayList<>(original.size());
+        for (Process p : original)
+            try {
+                copy.add(p.clone());
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
+        return copy;
+    };
 
     private static void RunScheduler(ArrayList<Process> processes, AbstractScheduler scheduler) {
         System.out.println(String.format("The used scheduler is : %s", scheduler.getName()));
