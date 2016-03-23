@@ -36,6 +36,9 @@ public class Process {
         return finish;
     }
 
+    public void resetFinish(){
+        this.finish = 0;
+    }
     public void setFinish(int finish) {
         if (finish < (this.arrival + this.duration))
             throw new IllegalArgumentException("A process can't finish before its arrival & execution");
