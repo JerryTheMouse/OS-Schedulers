@@ -17,20 +17,35 @@ public class nonGUIMain {
 
         // Create a Few test Process
         ArrayList<Process> processes = new ArrayList<>();
-        processes.add(new Process(0, 10));
+        processes.add(new Process(9, 10));
         processes.add(new Process(5, 6));
         processes.add(new Process(2, 3));
         processes.add(new Process(25, 6));
 
-        AbstractScheduler scheduler = new RoundRobin();
+        AbstractScheduler scheduler;
+        //Run Round Robin
+        scheduler = new RoundRobin();
         ((RoundRobin) scheduler).setQuantumTime(2);
+        RunScheduler(processes, scheduler);
+        ResetProcessFinishTimes(processes);
+        //Run FCFS
+        scheduler = new FCFS();
+        RunScheduler(processes, scheduler);
+
+    }
+
+
+    private static void ResetProcessFinishTimes(ArrayList<Process> processes) {
+        processes.forEach(Process::resetFinish);
+    }
+
+    private static void RunScheduler(ArrayList<Process> processes, AbstractScheduler scheduler) {
         System.out.println(String.format("The used scheduler is : %s", scheduler.getName()));
         System.out.println(String.format("It works as the following : %s", scheduler.getDescription()));
 
         LinkedList<WorkUnit> output = scheduler.apply(processes);
         PrintSchedule(output);
-
-
+        System.out.println();
     }
 
     private static void PrintSchedule(LinkedList<WorkUnit> output) {
@@ -49,4 +64,6 @@ public class nonGUIMain {
         }
         System.out.println("|");
     }
+
+
 }
