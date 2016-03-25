@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane hgap="10" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="629.0" prefWidth="659.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller">
+   <rowConstraints>
+      <RowConstraints maxHeight="113.0" minHeight="0.0" percentHeight="40.0" prefHeight="105.0" />
+      <RowConstraints maxHeight="65.0" minHeight="0.0" percentHeight="40.0" prefHeight="38.0" />
+      <RowConstraints maxHeight="51.0" minHeight="10.0" percentHeight="47.0" prefHeight="35.0" />
+      <RowConstraints maxHeight="60.0" minHeight="9.0" percentHeight="83.0" prefHeight="25.0" />
+   </rowConstraints>
+   <columnConstraints>
+      <ColumnConstraints maxWidth="368.0" minWidth="10.0" percentWidth="50.0" prefWidth="313.0" />
+      <ColumnConstraints maxWidth="221.0" minWidth="10.0" percentWidth="50.0" prefWidth="175.0" />
+   </columnConstraints>
+   <children>
+      <TableView fx:id="processesTable" prefHeight="200.0" prefWidth="200.0" GridPane.rowSpan="3">
+        <columns>
+            <TableColumn fx:id="processIDTC" prefWidth="89.0" text="Process ID" />
+          <TableColumn fx:id="processArrivalTC" prefWidth="61.0" text="Arrival" />
+          <TableColumn fx:id="processDurationTC" prefWidth="75.0" text="Duration" />
+            <TableColumn fx:id="processPriorityTC" prefWidth="94.0" text="Priority" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <GridPane prefHeight="245.0" prefWidth="219.0" GridPane.columnIndex="1" GridPane.rowSpan="2">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Arrival" />
+            <Label text="Priority" GridPane.rowIndex="2" />
+            <Label text="Duration" GridPane.rowIndex="1" />
+            <Spinner fx:id="arrivalSpinner" GridPane.columnIndex="1" />
+            <Spinner fx:id="durationSpinner" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Spinner fx:id="prioritySpinner" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="addProcessBtn" mnemonicParsing="false" onAction="#AddProcess" text="Add Process" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+      <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <RadioButton fx:id="RoundRobinRadio" mnemonicParsing="false" text="RoundRobin">
+               <toggleGroup>
+                  <ToggleGroup fx:id="SchedulersToggleGroup" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="FCFSRadio" mnemonicParsing="false" text="FCFS" toggleGroup="$SchedulersToggleGroup" GridPane.rowIndex="1" />
+            <RadioButton fx:id="SJF_PRadio" mnemonicParsing="false" text="SJF Preemptive " toggleGroup="$SchedulersToggleGroup" GridPane.rowIndex="2" />
+            <RadioButton mnemonicParsing="false" text="RadioButton" toggleGroup="$SchedulersToggleGroup" GridPane.rowIndex="3" />
+            <RadioButton mnemonicParsing="false" text="RadioButton" toggleGroup="$SchedulersToggleGroup" GridPane.rowIndex="4" />
+            <RadioButton mnemonicParsing="false" text="Radio" toggleGroup="$SchedulersToggleGroup" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" onAction="#Schedule" text="Schedule" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+            <Spinner fx:id="quantumTimeSpinner" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
+      <ScrollPane pannable="true" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="3">
+         <content>
+            <Canvas fx:id="GanttChartCanvas" height="200.0" width="500.0" />
+         </content>
+      </ScrollPane>
+   </children>
+   <padding>
+      <Insets right="10.0" />
+   </padding>
+</GridPane>

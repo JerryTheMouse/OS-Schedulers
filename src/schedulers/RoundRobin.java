@@ -40,6 +40,9 @@ public class RoundRobin extends AbstractScheduler {
 
     @Override
     public LinkedList<WorkUnit> apply(ArrayList<Process> processes) {
+
+       if(processes.isEmpty())
+           return new LinkedList<>();
         //Sort process according to their arrival
         processes.sort(Comparator.comparingInt(Process::getArrival));
 
