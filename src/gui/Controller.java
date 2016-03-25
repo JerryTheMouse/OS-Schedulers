@@ -88,7 +88,12 @@ public class Controller implements Initializable {
                 gc.fillText(String.valueOf(counter), x, y + 1.75 * h);
 
             gc.strokeRect(x, y, w, h);
-            gc.fillText(String.format("P %d", u.getP().getId()), x + 5, y + 0.75 * h);
+            if (u.getP() == null)
+
+                gc.fillText("Idle", x + 5, y + 0.75 * h);
+
+            else
+                gc.fillText(String.format("P %d", u.getP().getId()), x + 5, y + 0.75 * h);
 
 
             counter += u.getTime();
