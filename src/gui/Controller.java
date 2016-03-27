@@ -61,7 +61,9 @@ public class Controller implements Initializable {
         } else if (toggle == FCFSRadio) {
             scheduler = new FCFS();
         } else if (toggle == SJF_PRadio) {
-        }
+            scheduler = new SJF_P();
+        } else if (toggle == SJF_NPRadio)
+            scheduler = new SJF_NP();
 
         processes.clear();
         observableProcesses.forEach(process -> {
