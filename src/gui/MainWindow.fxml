@@ -78,10 +78,10 @@
                </toggleGroup></RadioButton>
             <RadioButton fx:id="FCFSRadio" mnemonicParsing="false" text="FCFS" toggleGroup="$SchedulersToggleGroup" GridPane.rowIndex="1" />
             <RadioButton fx:id="SJF_PRadio" mnemonicParsing="false" text="SJF Preemptive " toggleGroup="$SchedulersToggleGroup" GridPane.rowIndex="2" />
-            <RadioButton mnemonicParsing="false" text="RadioButton" toggleGroup="$SchedulersToggleGroup" GridPane.rowIndex="3" />
+            <RadioButton fx:id="SJF_NPRadio" mnemonicParsing="false" text="SJF Non Preemptive " toggleGroup="$SchedulersToggleGroup" GridPane.rowIndex="3" />
             <RadioButton mnemonicParsing="false" text="RadioButton" toggleGroup="$SchedulersToggleGroup" GridPane.rowIndex="4" />
             <RadioButton mnemonicParsing="false" text="Radio" toggleGroup="$SchedulersToggleGroup" GridPane.rowIndex="5" />
-            <Button mnemonicParsing="false" onAction="#Schedule" text="Schedule" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+            <Button fx:id="scheduleBtn" mnemonicParsing="false" onAction="#Schedule" text="Schedule" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
             <Spinner fx:id="quantumTimeSpinner" GridPane.columnIndex="1" />
          </children>
       </GridPane>
