@@ -11,10 +11,6 @@ import java.util.LinkedList;
  * Copyrights Shadyoatef@gmail.com
  */
 public abstract class AbstractScheduler {
-    /**
-     * @return Array of Required Process attributes
-     */
-    public abstract Process.Attributes[] getRequiredAttributes();
 
     /**
      * @return Human-Readable scheduler name

@@ -10,10 +10,6 @@ import java.util.*;
  * Copyrights Shadyoatef@gmail.com
  */
 public class FCFS extends AbstractScheduler {
-    @Override
-    public Process.Attributes[] getRequiredAttributes() {
-        return new Process.Attributes[]{Process.Attributes.ARRIVAL, Process.Attributes.DURATION};
-    }
 
     @Override
     public String getName() {

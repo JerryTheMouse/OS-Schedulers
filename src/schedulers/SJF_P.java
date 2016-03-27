@@ -9,10 +9,7 @@ import java.util.*;
  * Created by Dalia on 3/24/2016.
  */
 public class SJF_P extends AbstractScheduler {
-    @Override
-    public Process.Attributes[] getRequiredAttributes() {
-        return new Process.Attributes[0];
-    }
+
 
     @Override
     public String getName() {

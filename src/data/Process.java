@@ -90,7 +90,4 @@ public class Process implements Cloneable{
         return (Process) super.clone();
     }
 
-    public enum Attributes {
-        PRIORITY, ARRIVAL, DURATION
-    }
 }

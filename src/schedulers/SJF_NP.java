@@ -12,10 +12,6 @@ import java.util.Queue;
  * Created by Dalia on 3/26/2016.
  */
 public class SJF_NP extends AbstractScheduler {
-    @Override
-    public Process.Attributes[] getRequiredAttributes() {
-        return new Process.Attributes[0];
-    }
 
     @Override
     public String getName() {

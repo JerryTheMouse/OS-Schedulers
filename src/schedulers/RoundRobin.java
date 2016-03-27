@@ -23,10 +23,6 @@ public class RoundRobin extends AbstractScheduler {
         this.quantumTime = quantumTime;
     }
 
-    @Override
-    public Process.Attributes[] getRequiredAttributes() {
-        throw new NotImplementedException();
-    }
 
     @Override
     public String getName() {
