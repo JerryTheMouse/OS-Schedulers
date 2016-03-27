@@ -88,7 +88,7 @@ public class Controller implements Initializable {
         //Clear the previous chart
         gc.clearRect(0, 0, GanttChartCanvas.getWidth(), GanttChartCanvas.getHeight());
         double x = 10, y = 10, w = 40, h = 20;
-        requiredCanvasHeight = y + output.size() * h + 50;
+        requiredCanvasHeight = y +  4* h ;
         GanttChartCanvas.setHeight(requiredCanvasHeight);
         GanttChartCanvas.setWidth(output.size() * w + 50);
 
@@ -130,7 +130,7 @@ public class Controller implements Initializable {
 
         //The process name
         gc.strokeRect(x, y, w, h);
-        gc.fillText("Process Id", x + 5, y + 0.75 * h);
+        gc.fillText("Process ID", x + 5, y + 0.75 * h);
 
         // The process average time
         gc.strokeRect(x + w, y, w, h);
