@@ -67,9 +67,9 @@ public class Controller implements Initializable {
         } else if (toggle == SJF_NPRadio)
             scheduler = new SJF_NP();
         else if (toggle == Priority_PRadio) {
-            //todo  scheduler = new Priority Preemptive scheduler
+            scheduler = new Priority_P();
         } else if (toggle == Priority_NPRadio) {
-            //todo  scheduler = new Priority Non Preemptive scheduler
+            scheduler = new Priority_NP();
         }
 
 
