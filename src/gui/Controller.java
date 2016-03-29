@@ -44,6 +44,8 @@ public class Controller implements Initializable {
     public RadioButton FCFSRadio;
     public RadioButton SJF_PRadio;
     public RadioButton SJF_NPRadio;
+    public RadioButton Priority_PRadio;
+    public RadioButton Priority_NPRadio;
 
     // Canvas
     public Canvas GanttChartCanvas;
@@ -64,7 +66,14 @@ public class Controller implements Initializable {
             scheduler = new SJF_P();
         } else if (toggle == SJF_NPRadio)
             scheduler = new SJF_NP();
+        else if (toggle == Priority_PRadio) {
+            //todo  scheduler = new Priority Preemptive scheduler
+        } else if (toggle == Priority_NPRadio) {
+            //todo  scheduler = new Priority Non Preemptive scheduler
+        }
 
+
+        // Make a copy from the observable list into the array list
         processes.clear();
         observableProcesses.forEach(process -> {
             try {
@@ -74,7 +83,7 @@ public class Controller implements Initializable {
 
             }
         });
-
+        //pass the copy to the scheduler
         drawGanttChart(scheduler, scheduler.apply(processes));
 
     }
@@ -88,7 +97,7 @@ public class Controller implements Initializable {
         //Clear the previous chart
         gc.clearRect(0, 0, GanttChartCanvas.getWidth(), GanttChartCanvas.getHeight());
         double x = 10, y = 10, w = 40, h = 20;
-        requiredCanvasHeight = y +  4* h ;
+        requiredCanvasHeight = y + 4 * h;
         GanttChartCanvas.setHeight(requiredCanvasHeight);
         GanttChartCanvas.setWidth(output.size() * w + 50);
 
