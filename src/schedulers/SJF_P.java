@@ -54,9 +54,10 @@ public class SJF_P extends AbstractScheduler {
 
             if (currentExecutedProcess != null) {
                 remainingBursts.put(currentExecutedProcess, remainingBursts.get(currentExecutedProcess) - 1);
-                if (remainingBursts.get(currentExecutedProcess) == 0)
+                if (remainingBursts.get(currentExecutedProcess) == 0) {
                     readyQueue.remove(currentExecutedProcess);
-                currentExecutedProcess.setFinish(currentTime);
+                    currentExecutedProcess.setFinish(currentTime);
+                }
             }
 
             for (Process p : readyQueue) {
